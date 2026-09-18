@@ -1,0 +1,23 @@
+name: Linux Commands and File System Operations
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Setup
+        run: make setup
+
+      - name: Run Assignment Script
+        run: make run
+
+      - name: Verify Output
+        run: make verify
+
+      - name: Clean Up
+        if: always()
+        run: make clean
