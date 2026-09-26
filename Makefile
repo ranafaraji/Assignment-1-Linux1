@@ -8,7 +8,7 @@ all: verify
 
 setup:
 	@echo "Setting up environment..."
-	mkdir -p $(PROJECT_DIR)/{data,scripts,logs,backup}
+	mkdir -p $(PROJECT_DIR)/data $(PROJECT_DIR)/scripts $(PROJECT_DIR)/logs $(PROJECT_DIR)/backup
 	@echo "Environment setup complete."
 
 run: setup
