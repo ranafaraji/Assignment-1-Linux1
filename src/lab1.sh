@@ -94,10 +94,14 @@ ps aux | grep '[b]ash' || true
 # Create a compressed archive of the 'backup' directory and store it within the same directory.
 # Use the current date to name the archive file.
 echo "Creating a compressed archive of the 'backup' directory..."
-# Archive the backup directory itself but exclude the archive file to avoid
-# adding the archive to itself while writing it.
+
 ARCHIVE_NAME="backup_$(date +%Y%m%d).tar.gz"
-tar --exclude="backup/${ARCHIVE_NAME}" -czvf "${PROJECT_DIR}/backup/${ARCHIVE_NAME}" -C "${PROJECT_DIR}" backup
+
+tar -czvf "${PROJECT_DIR}/${ARCHIVE_NAME}" \
+  -C "${PROJECT_DIR}" backup
+
+mv "${PROJECT_DIR}/${ARCHIVE_NAME}" "${PROJECT_DIR}/backup/"
+
 # 8. Log Completion
 # Create a log message indicating the completion of the assignment tasks and store it in a 'README.md' file inside the 'project' directory.
 echo "Logging completion message..."
